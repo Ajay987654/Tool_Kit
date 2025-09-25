@@ -7,12 +7,10 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join("static", "downloads")
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# Home
 @app.route('/')
 def index():
     return render_template("index.html")
 
-# File Convert Route
 @app.route('/convert', methods=['POST'])
 def convert():
     file = request.files['file']
@@ -22,7 +20,6 @@ def convert():
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filepath)
 
-        # Convert file
         output_file = convert_file(filepath, target)
         file_url = url_for('static', filename='downloads/' + os.path.basename(output_file))
 
@@ -30,7 +27,6 @@ def convert():
 
     return "No file uploaded", 400
 
-# Video Download Route
 @app.route('/download_video', methods=['POST'])
 def download_vid():
     url = request.form['url']

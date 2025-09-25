@@ -8,7 +8,6 @@ def convert_file(filepath, target):
     filename, ext = os.path.splitext(filepath)
     output_file = ""
 
-    # PDF -> Word
     if ext.lower() == ".pdf" and target == "word":
         doc = Document()
         reader = PdfReader(filepath)
@@ -19,7 +18,7 @@ def convert_file(filepath, target):
         output_file = filename + ".docx"
         doc.save(output_file)
 
-    # PDF -> PPT
+
     elif ext.lower() == ".pdf" and target == "ppt":
         prs = Presentation()
         reader = PdfReader(filepath)
@@ -32,7 +31,6 @@ def convert_file(filepath, target):
         output_file = filename + ".pptx"
         prs.save(output_file)
 
-    # Word -> PDF
     elif ext.lower() == ".docx" and target == "pdf":
         doc = Document(filepath)
         output_file = filename + ".pdf"
@@ -43,7 +41,6 @@ def convert_file(filepath, target):
             y -= 20
         c.save()
 
-    # Word -> PPT
     elif ext.lower() == ".docx" and target == "ppt":
         prs = Presentation()
         doc = Document(filepath)

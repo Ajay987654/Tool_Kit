@@ -10,7 +10,7 @@ def download_video(url, quality, output_folder):
     out_path = Path(output_folder)
     out_path.mkdir(parents=True, exist_ok=True)
 
-    # Convert "720p" -> height number
+
     height = quality.replace('p', '')
 
     ydl_opts = {
