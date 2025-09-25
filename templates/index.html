@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+  <!-- File Converter -->
+  <div class="bg-white shadow rounded p-6">
+    <h2 class="text-xl font-semibold mb-4">Convert Files</h2>
+    <form action="/convert" method="post" enctype="multipart/form-data" class="space-y-4">
+      <input type="file" name="file" class="border p-2 w-full">
+      <select name="target" class="border p-2 w-full">
+        <option value="word">PDF ➝ Word</option>
+        <option value="ppt">PDF ➝ PPT</option>
+        <option value="pdf">Word ➝ PDF</option>
+      </select>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Convert</button>
+    </form>
+  </div>
+
+  <!-- Video Downloader -->
+  <div class="bg-white shadow rounded p-6">
+    <h2 class="text-xl font-semibold mb-4">Download Video</h2>
+    <form action="/download_video" method="post" class="space-y-4">
+      <input type="text" name="url" placeholder="Paste YouTube or Instagram URL" class="border p-2 w-full">
+      <select name="quality" class="border p-2 w-full">
+        <option value="360p">360p</option>
+        <option value="480p">480p</option>
+        <option value="720p">720p</option>
+        <option value="1080p">1080p</option>
+      </select>
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Download</button>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}
